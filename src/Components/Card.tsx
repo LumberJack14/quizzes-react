@@ -8,7 +8,19 @@ import { IoIosTimer } from "react-icons/io";
 import { useRouter } from "next/router";
 import styles from "@/styles/Card.module.css";
 
-const Card = (): JSX.Element => {
+interface Props {
+  quizName: string;
+  quizDesc: string;
+  creatorId: number;
+  amount: number;
+}
+
+const Card = ({
+  quizName,
+  quizDesc,
+  creatorId,
+  amount,
+}: Props): JSX.Element => {
   const router = useRouter();
   const [selectedTimer, setSelectedTimer] = useState<number>(10);
 
@@ -37,14 +49,18 @@ const Card = (): JSX.Element => {
             width: "unset",
             borderRadius: "25px",
           }}
+          priority={true}
         />
       </div>
       <div className={styles.rightContainer}>
         <div className={styles.descriptionContainer}>
-          <h2 className={styles.header}>Zagolovok</h2>
+          <h2 className={styles.header}>{quizName}</h2>
           <h2>
-            description <br />
-            amount of questions: 2
+            {" "}
+            Description: <br />
+            {quizDesc} <br />
+            amount of questions: {amount} <br />
+            creator: creatorId{creatorId}
           </h2>
         </div>
         <div className={styles.buttonContainer}>

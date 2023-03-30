@@ -1,13 +1,13 @@
-import { question, answer } from "@/types/types";
+import { Question, Answer } from "@/types/types";
 import Link from "next/link";
 import React from "react";
 import { AnswerButton, Timer } from "./exports";
 import styles from "@/styles/button84.module.css";
 
 type Props = {
-  questions: Array<question>;
+  questions: Array<Question>;
   currentQuestion: number;
-  handleAnswer: (answer: answer | undefined) => void;
+  handleAnswer: (answer: Answer | undefined) => void;
   seconds: number;
 };
 
@@ -32,7 +32,7 @@ const GameInstance = ({
         <h2>
           question number: {currentQuestion + 1} <br />
           {questions[currentQuestion]?.text} <br />
-          {questions[currentQuestion]?.answers.map((e: answer): JSX.Element => {
+          {questions[currentQuestion]?.answers.map((e: Answer): JSX.Element => {
             return (
               <AnswerButton
                 key={e.text}
