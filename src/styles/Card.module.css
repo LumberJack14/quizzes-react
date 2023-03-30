@@ -1,0 +1,40 @@
+.card {
+    display: flex;
+    height: 600px;
+    margin: 25px 0;
+    background-color: #202125;
+    color: white;
+    border-radius: 50px;
+}
+
+.imageContainer {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 20%;
+}
+
+.descriptionContainer {
+    height: 80%;
+}
+
+.card > div {
+    margin: 0 20px;
+}
+
+.header {
+    font-size: 36px;
+}

@@ -1,0 +1,26 @@
+.list {
+    background-color: #494a4e;
+    color: #fff;
+    border-radius: 10px;
+    border: 3px solid #a3a4a8;
+    box-sizing: border-box;
+    padding: 0;
+    position: absolute;
+    top: 58px;
+    width: 200px;
+}
+
+.ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.item {
+    font-size: large;
+    font-family: expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    padding: 10px;
+}
+
+.item:hover {
+    background-color: #a3b5ca;
+}
