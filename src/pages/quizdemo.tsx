@@ -8,7 +8,8 @@ import { Quiz } from "@/types/types";
 export default function QuizPage(): JSX.Element {
   // TODO: implement isloading with use router maybe through the card component
   // TODO: check everything for useCallback needed, handle errors
-
+  // TODO: implement useTransition inside Search bar (in the _app)
+  // TODO: onBlur event DropDownMenu
   const apiURL = process.env.NEXT_PUBLIC_QUIZZES_TOP_URL as string;
 
   const [pageNumber, setPageNumber] = useState<number>(0);

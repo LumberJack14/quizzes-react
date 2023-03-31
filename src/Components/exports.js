@@ -3,3 +3,4 @@ export {default as GameResult} from "./GameResult";
 export {default as Timer} from "./Timer";
 export {default as AnswerButton} from "./AnswerButton";
 export {default as DropDownMenu} from "./DropDownMenu";
+export {default as FormInput} from "./FormInput";

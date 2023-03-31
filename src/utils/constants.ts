@@ -1,4 +1,4 @@
-import { Quiz } from "@/types/types";
+import { FormInputType } from "@/types/types";
 
 export const possibleTimers = [
   {
@@ -19,35 +19,34 @@ export const possibleTimers = [
   },
 ];
 
-export const gameDemo: Quiz = {
-  amount: 2,
-  questions: [
-    {
-      text: "who is the main character",
-      answers: [
-        {
-          text: "subaru",
-          correct: true,
-        },
-        {
-          text: "lion heart",
-          correct: false,
-        },
-      ],
-    },
-    {
-      text: "felix is a trap",
-      answers: [
-        {
-          text: "true",
-          correct: true,
-        },
-        {
-          text: "false",
-          correct: false,
-        },
-      ],
-    },
-  ],
-  creator: "me",
-};
+export const inputs: Array<FormInputType> = [
+  {
+    id: 1,
+    type: "text",
+    inputLabel: "Quiz Name",
+    placeholder: "CoolQuiz1337",
+    name: "quizName",
+    errorMessage:
+      "Quiz name should have 1-50 characters. And no special characters.",
+    required: true,
+    pattern: "[A-Za-z0-9]{1,50}$",
+  },
+  {
+    id: 2,
+    type: "text",
+    inputLabel: "Quiz description",
+    placeholder: "the best quiz out there",
+    name: "quizDesc",
+    errorMessage: "Quiz description's maximum length is 200 characters.",
+    required: false,
+  },
+  {
+    id: 3,
+    type: "text",
+    inputLabel: "Your nickname",
+    placeholder: "Booty_hunter_9000",
+    name: "creatorName",
+    errorMessage: "Maximum length is 30 and no special charaters.",
+    required: true,
+  },
+];
