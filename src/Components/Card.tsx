@@ -8,6 +8,7 @@ import { IoIosTimer } from "react-icons/io";
 import { useRouter } from "next/router";
 import styles from "@/styles/Card.module.css";
 
+// consider changing to type?
 interface Props {
   quizName: string;
   quizDesc: string;

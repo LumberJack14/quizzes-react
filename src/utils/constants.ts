@@ -39,6 +39,7 @@ export const inputs: Array<FormInputType> = [
     name: "quizDesc",
     errorMessage: "Quiz description's maximum length is 200 characters.",
     required: false,
+    maxLength: 200,
   },
   {
     id: 3,
@@ -48,5 +49,14 @@ export const inputs: Array<FormInputType> = [
     name: "creatorName",
     errorMessage: "Maximum length is 30 and no special charaters.",
     required: true,
+    maxLength: 30,
   },
 ];
+
+export const questionNameInput: FormInputType = {
+  type: "text",
+  inputLabel: "Question Name",
+  placeholder: "",
+  name: "question",
+  maxLength: 20,
+};

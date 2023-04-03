@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-// import { FormInput, AnswerButton } from "@/Components/exports";
-// TF IS THAT PROBLEM ?
 import FormInput from "@/Components/FormInput";
 import AnswerButton from "@/Components/AnswerButton";
 import styles from "@/styles/PrimaryForm.module.css";
 import { inputs } from "@/utils/constants";
+import { useRouter } from "next/router";
 
 const Create = (): JSX.Element => {
   const [questionsAmount, setQuestionsAmount] = useState<number>(0);
+  const router = useRouter();
 
   // the idea: user submits primary form and then goes on to create
   // questions one by one being able to move between them as they
@@ -22,11 +22,17 @@ const Create = (): JSX.Element => {
   // TODO: make an array of messages and map them
   // TODO: make desc scalable
 
-  console.log(values.quizName);
-
   const handleSubmit = (e: React.SyntheticEvent): void => {
-    console.log("sub");
     e.preventDefault();
+
+    router.push({
+      pathname: "/Create/questions",
+      query: {
+        quizName: values.quizName,
+        quizDesc: values.quizDesc,
+        creatorName: values.creatorName,
+      },
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {

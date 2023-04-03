@@ -7,7 +7,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const FormInput = (props: Props): JSX.Element => {
-  const { input, onChange } = props;
+  const { input, onChange, value } = props;
 
   const [blurred, setBlurred] = useState<boolean>(false);
 
@@ -20,6 +20,7 @@ const FormInput = (props: Props): JSX.Element => {
       <div className={styles.div}>
         <label>{input.inputLabel}</label>
         <input
+          value={value}
           placeholder={input.placeholder}
           name={input.name}
           type={input.type}
@@ -28,6 +29,7 @@ const FormInput = (props: Props): JSX.Element => {
           onChange={onChange}
           onBlur={handleBlur}
           alt={blurred.toString()}
+          maxLength={input.maxLength}
           /* really dirty trick here */
         />
         <span className={styles.span}>{input.errorMessage}</span>

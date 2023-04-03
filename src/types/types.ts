@@ -17,7 +17,7 @@ export interface Quiz {
   quizDesc: string;
   questions: Array<Question>;
   creatorId: number;
-  creator?: string; // TODO: create a user TYPE
+  creatorName?: string; // TODO: create a user TYPE
   //creationDate: Date
 }
 
@@ -27,14 +27,22 @@ export interface QuizzesApiRequest {
 }
 
 export interface FormInputType {
-  id: number;
+  id?: number;
   type: HTMLInputTypeAttribute; // doesn't matter if it's set
   // like this becaues ts still doesn't complain about invalid
   // input types. leave it though
   inputLabel: string;
   placeholder: string;
   name: string;
-  errorMessage: string;
+  errorMessage?: string;
   required?: boolean;
   pattern?: string;
+  maxLength?: number;
 }
+
+export interface CustomQuestion extends Question {
+  number: number;
+  name: string;
+}
+
+export type QuestionName = Pick<CustomQuestion, "name" | "number">;

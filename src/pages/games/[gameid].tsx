@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Answer, Question, Quiz } from "@/types/types";
 import { GameInstance, GameResult } from "@/Components/exports";
-import { gameDemo } from "@/utils/constants";
 import { useRouter } from "next/router";
 
 const isLast = (questions: Array<Question>, e: Question): boolean => {
