@@ -32,7 +32,7 @@ export interface FormInputType {
   // like this becaues ts still doesn't complain about invalid
   // input types. leave it though
   inputLabel: string;
-  placeholder: string;
+  placeholder?: string;
   name: string;
   errorMessage?: string;
   required?: boolean;

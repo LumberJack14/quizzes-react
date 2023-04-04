@@ -1,0 +1,7 @@
+.div {
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    background-color: #202125;
+    border-bottom: 1px solid #a3a4a8;
+}

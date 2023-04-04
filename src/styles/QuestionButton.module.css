@@ -1,0 +1,19 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    background-color: #202125;
+    width: 250px;
+    height: 50px;
+    padding-left: 30px;
+}
+
+.question {
+    color: #a0a4b4;
+    font-size: 15px;
+    display: inline;
+}
+
+.main:hover {
+    background-color: #2a2c31;
+    cursor: pointer;
+}

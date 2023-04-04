@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, ReactElement } from "react";
+import Layout from "@/Components/layout";
 import FormInput from "@/Components/FormInput";
 import AnswerButton from "@/Components/AnswerButton";
 import styles from "@/styles/PrimaryForm.module.css";
@@ -40,13 +41,23 @@ const Create = (): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.main}>
-      {inputs.map(input => (
-        <FormInput key={input.id} input={input} onChange={handleChange} />
-      ))}
-      <AnswerButton text="Continue" className={styles.button} />
-    </form>
+    <div
+      style={{
+        paddingTop: "65px",
+      }}
+    >
+      <form onSubmit={handleSubmit} className={styles.main}>
+        {inputs.map(input => (
+          <FormInput key={input.id} input={input} onChange={handleChange} />
+        ))}
+        <AnswerButton text="Continue" className={styles.button} />
+      </form>
+    </div>
   );
+};
+
+Create.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Create;

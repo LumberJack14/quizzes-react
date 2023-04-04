@@ -1,7 +1,8 @@
 import { Question, Answer } from "@/types/types";
 import Link from "next/link";
 import React from "react";
-import { AnswerButton, Timer } from "./exports";
+import { AnswerButton, Timer } from "./index";
+//working?
 import styles from "@/styles/button84.module.css";
 
 type Props = {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Answer, Question, Quiz } from "@/types/types";
-import { GameInstance, GameResult } from "@/Components/exports";
+import { GameInstance, GameResult } from "@/Components/index";
 import { useRouter } from "next/router";
 
 const isLast = (questions: Array<Question>, e: Question): boolean => {
@@ -11,7 +11,8 @@ export default function Game(): JSX.Element {
   const router = useRouter();
   let seconds = router?.query?.seconds;
 
-  const questions: Array<Question> = gameDemo.questions;
+  /* const questions: Array<Question> = gameDemo.questions; */
+  const questions: Array<Question> = [];
 
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [correctAnswers, setCorrectAnswers] = useState<number>(0);

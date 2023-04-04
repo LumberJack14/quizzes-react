@@ -56,7 +56,14 @@ export const inputs: Array<FormInputType> = [
 export const questionNameInput: FormInputType = {
   type: "text",
   inputLabel: "Question Name",
-  placeholder: "",
-  name: "question",
+  placeholder: "question name",
+  name: "question name",
   maxLength: 20,
+};
+
+export const questionInput: FormInputType = {
+  type: "text",
+  inputLabel: "Question",
+  placeholder: "your question",
+  name: "",
 };

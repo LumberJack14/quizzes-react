@@ -4,3 +4,6 @@ export {default as Timer} from "./Timer";
 export {default as AnswerButton} from "./AnswerButton";
 export {default as DropDownMenu} from "./DropDownMenu";
 export {default as FormInput} from "./FormInput";
+export {default as GreenButton} from "./GreenButton";
+export {default as QuestionsSideBar} from "./QuestionsSideBar";
+export {default as Header} from "./Header";

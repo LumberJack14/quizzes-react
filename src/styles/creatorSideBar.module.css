@@ -1,23 +1,26 @@
 .container {
-    height: 100dvh;
+    height: 100%;
     display: flex;
     flex-direction: column;
-
+    background-color: #202125;
+    width: 230px;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
+    width: 230px;
+    padding-top: 20px;
+    padding-bottom: 10px;
     overflow-y: auto;
     overflow-x:hidden;
     height: 100%;
+   
 }
 
 .wrapper::-webkit-scrollbar {
     background-color: transparent;
     width: 0px;
 }
+
 
 /* .wrapper::-webkit-scrollbar {
     width: 8px;

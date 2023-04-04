@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "@/styles/creatorSideBar.module.css";
-import { QuestionName } from "@/types/types";
+import { CustomQuestion, QuestionName } from "@/types/types";
+import GreenButton from "./GreenButton";
+import QuestionButton from "./QuestionButton";
+//problems?
 
 export type QuestionsSBProps = {
   questionCount: number;
@@ -8,7 +11,7 @@ export type QuestionsSBProps = {
   maxQuestions: number;
   currentQuestion: number;
   setCurrentQuestion: React.Dispatch<React.SetStateAction<number>>;
-  names: Array<QuestionName>;
+  questions: Array<CustomQuestion>;
 };
 
 const QuestionsSideBar: React.FC<QuestionsSBProps> = ({
@@ -17,10 +20,9 @@ const QuestionsSideBar: React.FC<QuestionsSBProps> = ({
   maxQuestions,
   currentQuestion,
   setCurrentQuestion,
-  names,
+  questions,
 }) => {
   const handleAdd = (): void => {
-    console.log(questionCount);
     questionCount >= maxQuestions
       ? alert("Amount of questions exceeded!")
       : addQuestion();
@@ -33,15 +35,24 @@ const QuestionsSideBar: React.FC<QuestionsSBProps> = ({
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        {names.map(el => (
-          <button onClick={() => handleClick(el)} className={styles.button}>
-            {`${el.name}`}
-          </button>
+        {questions.map(el => (
+          <QuestionButton
+            key={el.number}
+            questionNumber={el.number}
+            questionName={el.name}
+            questionText={el.text}
+            onClick={() => handleClick(el)}
+          />
         ))}
       </div>
-      <button onClick={handleAdd} className={styles.button}>
-        +
-      </button>
+      <GreenButton
+        text={"Add"}
+        onClick={handleAdd}
+        style={{
+          marginLeft: "10px",
+          marginBottom: "10px",
+        }}
+      />
     </div>
   );
 };
