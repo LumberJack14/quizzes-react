@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import styles from "@/styles/quizdemo.module.css";
-
-import Card from "@/Components/Card";
+import React, { useState } from "react";
+import Card from "@/Components/Card/Card";
 import useFetch from "@/utils/useFetch";
 import { Quiz } from "@/types/types";
+
+import styles from "@/styles/quizdemo.module.css";
 
 export default function QuizPage(): JSX.Element {
   // TODO: implement isloading with use router maybe through the card component

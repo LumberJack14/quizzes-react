@@ -2,7 +2,8 @@ import React, { ReactElement } from "react";
 import Layout from "@/Components/layout";
 import Link from "next/link";
 import { NextPageWithLayout } from "./_app";
-import QuestionButton from "@/Components/QuestionButton";
+import TextArea from "@/Components/TextArea/TextArea";
+import QuestionButton from "@/Components/QuestionButton/QuestionButton";
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -18,6 +19,7 @@ const Home: NextPageWithLayout = () => {
         questionName="Question 1"
         questionText="when did I start pooing apples like what"
         onClick={() => {}}
+        questionNumber={1}
       />
     </div>
   );

@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import styles from "@/styles/QuestionButton.module.css";
-import QuestionMark from "../../public/svg/question-icon.svg";
+import React from "react";
+import QuestionMark from "../../../public/svg/question-icon.svg";
+
+import styles from "./QuestionButton.module.css";
 
 export type QuestoinButtonProps = {
   questionName: string;
@@ -26,9 +27,7 @@ const QuestionButton = (props: QuestoinButtonProps): JSX.Element => {
         <div className={styles.name}>
           {questionName === "" ? `Question ${questionNumber}` : questionName}
         </div>
-        <div className={styles.question}>
-          {innerText === "" ? `your question` : questionText}
-        </div>
+        <div className={styles.question}>{innerText}</div>
       </div>
     </div>
   );

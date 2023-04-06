@@ -1,5 +1,8 @@
 .page {
-    width: 1000px;
-    margin: auto;
-    background-color: #16171b;
+  width: 1000px;
+  margin: auto;
+  background-color: #16171b;
+  font-family: -apple-system, BlinkMacSystemFont, Roobert, BlinkMacSystemFont,
+    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
 }

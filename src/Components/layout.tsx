@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "./Header/Header";
 
 export default function layout({ children }: any) {
   return (

@@ -1,11 +1,14 @@
-import QuestionsSideBar from "@/Components/QuestionsSideBar";
-import { useRouter } from "next/router";
 import React, { useState, ReactElement } from "react";
+import { useRouter } from "next/router";
 import { CustomQuestion } from "@/types/types";
-import FormInput from "@/Components/FormInput";
-import Layout from "@/Components/layout";
 import { questionInput, questionNameInput } from "@/utils/constants";
+import Layout from "@/Components/layout";
+import FormInput from "@/Components/FormInput/FormInput";
+import QuestionsSideBar from "@/Components/QuestionsSideBar/QuestionsSideBar";
+import TextArea from "@/Components/TextArea/TextArea";
+
 import styles from "@/styles/Creator.module.css";
+import AnswersForm from "@/Components/AnswersForm/AnswersForm";
 
 const maxQuestions: number = 50;
 
@@ -20,7 +23,16 @@ const Questions = (): JSX.Element => {
       name: "",
       number: 1,
       text: "",
-      answers: [],
+      answers: [
+        {
+          text: "",
+          correct: true,
+        },
+        {
+          text: "",
+          correct: false,
+        },
+      ],
     },
   ]);
   const [selectedQuestion, setSelectedQuestion] = useState<number>(1);
@@ -34,7 +46,16 @@ const Questions = (): JSX.Element => {
         name: "",
         number: questions.length + 1,
         text: "",
-        answers: [],
+        answers: [
+          {
+            text: "",
+            correct: true,
+          },
+          {
+            text: "",
+            correct: false,
+          },
+        ],
       },
     ]);
   };
@@ -50,13 +71,64 @@ const Questions = (): JSX.Element => {
     );
   };
 
-  const onQuestionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onQuestionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setQuestions(
       questions.map(el => {
         if (el.number === selectedQuestion) {
           el.text = e.target.value;
         }
         return el;
+      })
+    );
+  };
+
+  const changeAnswer = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    setQuestions(
+      questions.map(question => {
+        if (question.number === selectedQuestion) {
+          question.answers.map(ans => {
+            if (question.answers.indexOf(ans) === index) {
+              ans.text = e.target.value;
+            }
+            return ans;
+          });
+        }
+        return question;
+      })
+    );
+  };
+
+  const addAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setQuestions(
+      questions.map(el => {
+        if (el.number === selectedQuestion) {
+          el.answers.push({
+            text: "",
+            correct: false,
+          });
+        }
+        return el;
+      })
+    );
+  };
+
+  const setCorrect = (index: number) => {
+    setQuestions(
+      questions.map(question => {
+        if (question.number === selectedQuestion) {
+          return {
+            ...question,
+            answers: question.answers.map((ans, i) => ({
+              ...ans,
+              correct: index === i,
+            })),
+          };
+        }
+        return question;
       })
     );
   };
@@ -85,10 +157,17 @@ const Questions = (): JSX.Element => {
           input={questionNameInput}
           onChange={onNameChange}
         />
-        <FormInput
-          input={questionInput}
-          value={questions[selectedQuestion - 1].text}
+        <TextArea
+          text={questions[selectedQuestion - 1].text}
+          placeholder="your question"
+          label="Question"
           onChange={onQuestionChange}
+        />
+        <AnswersForm
+          answers={questions[selectedQuestion - 1].answers}
+          changeAnswer={changeAnswer}
+          addAnswer={addAnswer}
+          setCorrect={setCorrect}
         />
       </form>
     </div>

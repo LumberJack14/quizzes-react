@@ -1,6 +1,7 @@
-import React, { useState, ComponentType } from "react";
+import React, { useState } from "react";
+
 import buttonStyles from "@/styles/Button84.module.css";
-import styles from "@/styles/DropDownMenu.module.css";
+import styles from "./DropDownMenu.module.css";
 
 interface item {
   text: string;

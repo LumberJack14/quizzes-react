@@ -31,13 +31,14 @@ export interface FormInputType {
   type: HTMLInputTypeAttribute; // doesn't matter if it's set
   // like this becaues ts still doesn't complain about invalid
   // input types. leave it though
-  inputLabel: string;
+  inputLabel?: string;
   placeholder?: string;
   name: string;
   errorMessage?: string;
   required?: boolean;
   pattern?: string;
   maxLength?: number;
+  style?: object;
 }
 
 export interface CustomQuestion extends Question {

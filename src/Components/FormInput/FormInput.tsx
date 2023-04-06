@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "@/styles/FormInput.module.css";
+import styles from "./FormInput.module.css";
 import { FormInputType } from "@/types/types";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -18,7 +18,7 @@ const FormInput = (props: Props): JSX.Element => {
   return (
     <>
       <div className={styles.div}>
-        <label>{input.inputLabel}</label>
+        {input.inputLabel && <label>{input.inputLabel}</label>}
         <input
           value={value}
           placeholder={input.placeholder}
@@ -30,6 +30,7 @@ const FormInput = (props: Props): JSX.Element => {
           onBlur={handleBlur}
           alt={blurred.toString()}
           maxLength={input.maxLength}
+          style={input.style}
           /* really dirty trick here */
         />
         <span className={styles.span}>{input.errorMessage}</span>

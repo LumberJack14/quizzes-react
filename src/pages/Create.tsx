@@ -1,7 +1,7 @@
 import React, { useState, ReactElement } from "react";
 import Layout from "@/Components/layout";
-import FormInput from "@/Components/FormInput";
-import AnswerButton from "@/Components/AnswerButton";
+import FormInput from "@/Components/FormInput/FormInput";
+import AnswerButton from "@/Components/AnswerButton/AnswerButton";
 import styles from "@/styles/PrimaryForm.module.css";
 import { inputs } from "@/utils/constants";
 import { useRouter } from "next/router";

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import startButtonStyles from "@/styles/Button37.module.css";
 import Image from "next/image";
 import poster from "public/demoImages/poster.jpeg";
-import DropDownMenu from "@/Components/DropDownMenu";
+import DropDownMenu from "@/Components/DropDownMenu/DropDownMenu";
 import { possibleTimers } from "@/utils/constants";
 import { IoIosTimer } from "react-icons/io";
 import { useRouter } from "next/router";
-import styles from "@/styles/Card.module.css";
+
+import styles from "./Card.module.css";
+import startButtonStyles from "@/styles/Button37.module.css";
 
 // consider changing to type?
 // TODO: change basic button to green button

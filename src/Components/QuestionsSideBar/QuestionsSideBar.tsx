@@ -1,8 +1,9 @@
 import React from "react";
-import styles from "@/styles/creatorSideBar.module.css";
 import { CustomQuestion, QuestionName } from "@/types/types";
-import GreenButton from "./GreenButton";
-import QuestionButton from "./QuestionButton";
+import GreenButton from "../GreenButton";
+import QuestionButton from "../QuestionButton/QuestionButton";
+
+import styles from "./creatorSideBar.module.css";
 //problems?
 
 export type QuestionsSBProps = {
