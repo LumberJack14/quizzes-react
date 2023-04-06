@@ -1,14 +1,16 @@
 import React, { useState, ReactElement } from "react";
 import { useRouter } from "next/router";
 import { CustomQuestion } from "@/types/types";
-import { questionInput, questionNameInput } from "@/utils/constants";
+import { primaryAnswers, questionNameInput } from "@/utils/constants";
 import Layout from "@/Components/layout";
-import FormInput from "@/Components/FormInput/FormInput";
-import QuestionsSideBar from "@/Components/QuestionsSideBar/QuestionsSideBar";
-import TextArea from "@/Components/TextArea/TextArea";
+import {
+  QuestionsSideBar,
+  TextArea,
+  FormInput,
+  AnswersForm,
+} from "@/Components";
 
 import styles from "@/styles/Creator.module.css";
-import AnswersForm from "@/Components/AnswersForm/AnswersForm";
 
 const maxQuestions: number = 50;
 
@@ -23,16 +25,7 @@ const Questions = (): JSX.Element => {
       name: "",
       number: 1,
       text: "",
-      answers: [
-        {
-          text: "",
-          correct: true,
-        },
-        {
-          text: "",
-          correct: false,
-        },
-      ],
+      answers: primaryAnswers,
     },
   ]);
   const [selectedQuestion, setSelectedQuestion] = useState<number>(1);
@@ -46,16 +39,7 @@ const Questions = (): JSX.Element => {
         name: "",
         number: questions.length + 1,
         text: "",
-        answers: [
-          {
-            text: "",
-            correct: true,
-          },
-          {
-            text: "",
-            correct: false,
-          },
-        ],
+        answers: primaryAnswers,
       },
     ]);
   };

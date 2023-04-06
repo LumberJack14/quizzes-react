@@ -1,4 +1,4 @@
-import { FormInputType } from "@/types/types";
+import { Answer, FormInputType } from "@/types/types";
 
 export const possibleTimers = [
   {
@@ -67,3 +67,14 @@ export const questionInput: FormInputType = {
   placeholder: "your question",
   name: "",
 };
+
+export const primaryAnswers: Array<Answer> = [
+  {
+    text: "",
+    correct: true,
+  },
+  {
+    text: "",
+    correct: false,
+  },
+];

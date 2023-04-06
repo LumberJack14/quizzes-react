@@ -10,3 +10,4 @@ export { default as Header } from "./Header/Header";
 export { default as Card } from "./Card/Card";
 export { default as TextArea } from "./TextArea/TextArea";
 export { default as QuestionButton } from "./QuestionButton/QuestionButton";
+export { default as AnswersForm } from "./AnswersForm/AnswersForm";

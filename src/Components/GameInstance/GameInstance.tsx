@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { AnswerButton, Timer } from "../index";
 //working?
-import styles from "@/styles/button84.module.css";
+import styles from "@/styles/Button84.module.css";
 
 type Props = {
   questions: Array<Question>;

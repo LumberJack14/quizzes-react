@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import styles from "@/styles/button84.module.css";
+import styles from "@/styles/Button84.module.css";
 
 type Props = {
   correctAnswers: number;

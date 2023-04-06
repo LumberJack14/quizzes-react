@@ -1,10 +1,10 @@
 import React, { useState, ReactElement } from "react";
 import Layout from "@/Components/layout";
-import FormInput from "@/Components/FormInput/FormInput";
-import AnswerButton from "@/Components/AnswerButton/AnswerButton";
-import styles from "@/styles/PrimaryForm.module.css";
+import { FormInput, AnswerButton } from "@/Components";
 import { inputs } from "@/utils/constants";
 import { useRouter } from "next/router";
+
+import styles from "@/styles/PrimaryForm.module.css";
 
 const Create = (): JSX.Element => {
   const [questionsAmount, setQuestionsAmount] = useState<number>(0);
