@@ -68,6 +68,7 @@ export const questionInput: FormInputType = {
   name: "",
 };
 
+// has to be deeply copied, because it's to be initialized once upon import
 export const primaryAnswers: Array<Answer> = [
   {
     text: "",
@@ -78,3 +79,5 @@ export const primaryAnswers: Array<Answer> = [
     correct: false,
   },
 ];
+
+export const MEGABYTE: number = 1048576;

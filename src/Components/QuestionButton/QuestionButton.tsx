@@ -19,9 +19,22 @@ const QuestionButton = (props: QuestoinButtonProps): JSX.Element => {
       : questionText;
 
   return (
-    <div className={styles.main} onClick={onClick}>
+    <div
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === "Enter" || e.key === "Space") {
+          onClick();
+        }
+      }}
+      className={styles.main}
+      onClick={onClick}
+    >
       <QuestionMark
-        style={{ marginRight: "10px", marginTop: "3px", fontSize: 100 }}
+        style={{
+          marginRight: "10px",
+          marginTop: "3px",
+        }}
       />
       <div>
         <div className={styles.name}>

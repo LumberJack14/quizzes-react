@@ -11,9 +11,6 @@ const isLast = (questions: Array<Question>, e: Question): boolean => {
 export const getServerSideProps: GetServerSideProps<{
   data: Quiz;
 }> = async context => {
-  //test
-  console.log(context);
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_QUIZZES_API_URL as string}?id=${
       context.params?.id

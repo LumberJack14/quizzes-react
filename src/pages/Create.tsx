@@ -1,7 +1,7 @@
 import React, { useState, ReactElement } from "react";
 import Layout from "@/Components/layout";
-import { FormInput, AnswerButton } from "@/Components";
-import { inputs } from "@/utils/constants";
+import { FormInput, AnswerButton, Upload } from "@/Components";
+import { MEGABYTE, inputs } from "@/utils/constants";
 import { useRouter } from "next/router";
 
 import styles from "@/styles/PrimaryForm.module.css";
@@ -25,6 +25,8 @@ const Create = (): JSX.Element => {
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
 
+    if (document.activeElement?.className.startsWith("Upload")) return;
+
     router.push({
       pathname: "/Create/questions",
       query: {
@@ -45,10 +47,20 @@ const Create = (): JSX.Element => {
         paddingTop: "65px",
       }}
     >
-      <form onSubmit={handleSubmit} className={styles.main}>
+      <form
+        onSubmit={handleSubmit}
+        className={styles.main}
+        encType="multipart/form-data"
+      >
         {inputs.map(input => (
           <FormInput key={input.id} input={input} onChange={handleChange} />
         ))}
+        <Upload
+          id="disableSubmit"
+          label="Illustration (jpeg / png)"
+          accept="image/png, image/jpeg"
+          maxSize={MEGABYTE * 1.5}
+        />
         <AnswerButton text="Continue" className={styles.button} />
       </form>
     </div>

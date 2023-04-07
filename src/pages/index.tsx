@@ -2,8 +2,7 @@ import React, { ReactElement } from "react";
 import Layout from "@/Components/layout";
 import Link from "next/link";
 import { NextPageWithLayout } from "./_app";
-import TextArea from "@/Components/TextArea/TextArea";
-import QuestionButton from "@/Components/QuestionButton/QuestionButton";
+import { Upload, QuestionButton } from "@/Components";
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -21,6 +20,7 @@ const Home: NextPageWithLayout = () => {
         onClick={() => {}}
         questionNumber={1}
       />
+      <Upload />
     </div>
   );
 };

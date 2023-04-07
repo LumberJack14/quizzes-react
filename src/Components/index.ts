@@ -11,3 +11,4 @@ export { default as Card } from "./Card/Card";
 export { default as TextArea } from "./TextArea/TextArea";
 export { default as QuestionButton } from "./QuestionButton/QuestionButton";
 export { default as AnswersForm } from "./AnswersForm/AnswersForm";
+export { default as Upload } from "./Upload/Upload";

@@ -29,10 +29,11 @@
 .div span {
   display: none;
   color: rgb(255, 64, 64);
-  font-size: 15px;
+  font-size: medium;
 }
 
 .div input:invalid[alt="true"] {
+  outline: rgb(255, 64, 64);
   border: 1px solid red;
 }
 

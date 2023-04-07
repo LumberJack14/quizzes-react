@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute } from "react";
 
-export type statusOnComplete = "OK" | "ERROR";
+export type statusOnComplete = "QUESTION" | "ANSWER" | "OK";
 
 export type Answer = {
   id?: number;

@@ -1,5 +1,5 @@
 import React, { useState, ReactElement } from "react";
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 import { CustomQuestion, Quiz } from "@/types/types";
 import { primaryAnswers, questionNameInput } from "@/utils/constants";
 import Layout from "@/Components/layout";
@@ -24,7 +24,7 @@ const Questions = (): JSX.Element => {
   const [questionCount, setQuestionCount] = useState(1);
   const [questions, setQuestions] = useState<Array<CustomQuestion>>([
     {
-      name: "",
+      name: "Question 1",
       number: 1,
       text: "",
       answers: JSON.parse(JSON.stringify(primaryAnswers)),
@@ -38,14 +38,12 @@ const Questions = (): JSX.Element => {
     setQuestions([
       ...questions,
       {
-        name: "",
+        name: `Question ${questionCount + 1}`,
         number: questions.length + 1,
         text: "",
         answers: JSON.parse(JSON.stringify(primaryAnswers)),
       },
     ]);
-    console.log("primary answers: ");
-    console.log(primaryAnswers);
   };
 
   const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,7 +124,12 @@ const Questions = (): JSX.Element => {
     e.preventDefault();
 
     const response = submitQuiz(primaryInfo, questions);
-    console.log(response);
+
+    response.catch(error => {
+      console.error(error);
+      //router.push("/errorPage");
+      // add an error page explaining what's going on
+    });
   };
 
   return (
@@ -179,10 +182,13 @@ const submitQuiz = async (
   primaryInfo: any,
   questions: Array<CustomQuestion>
 ) => {
-  if (checkIntegrity(questions) === "ERROR") {
-    alert("Some questions or answers are unfilled.");
+  const [status, name] = checkIntegrity(questions);
+
+  if (status.toString() !== "OK") {
+    alert(`There is a blank ${status.toLowerCase()} field. Check: ${name}`);
     return;
   }
+
   let data: Quiz = {
     amount: questions.length,
     quizName: primaryInfo.quizName,
@@ -191,18 +197,20 @@ const submitQuiz = async (
     creatorId: 10,
     creatorName: primaryInfo.creatorName,
   };
-  console.log(data);
 
-  const response = await fetch(
-    process.env.NEXT_PUBLIC_QUIZZES_API_URL as string,
-    {
+  let response;
+
+  try {
+    response = await fetch(process.env.NEXT_PUBLIC_QUIZZES_API_URL as string, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }
-  );
+    });
+  } catch (error) {
+    console.error(error);
+  }
 
   return response;
 };

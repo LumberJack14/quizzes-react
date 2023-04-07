@@ -15,7 +15,6 @@
     "dotenv": "^16.0.3",
     "formular": "^3.1.6",
     "next": "13.2.4",
-    "next-svgr": "^0.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",

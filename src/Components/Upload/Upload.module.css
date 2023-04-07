@@ -1,0 +1,77 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, Roobert, BlinkMacSystemFont,
+    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.main input {
+  display: none;
+}
+
+.button {
+  height: 250px;
+  color: white;
+  width: 500px;
+  background-color: #202125;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.icon {
+  color: rgb(171, 171, 171);
+  transition-property: transform, color;
+  transition-duration: 0.3s;
+  /* defaults but let them be */
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.button:hover .icon {
+  filter: drop-shadow(0 0 2px white);
+  transform: translateY(-5px);
+  color: white;
+  text-shadow: 0 0 10px white;
+}
+
+.image {
+  height: 85%;
+  max-width: 470px;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 5px;
+
+  transition-property: transform;
+  transition-duration: 0.3s;
+  /* defaults but let them be */
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.button:hover .image {
+  transform: translateY(-4px);
+}
+
+.error {
+  color: rgb(255, 64, 64);
+  font-size: medium;
+}
+
+.dragbutton {
+  height: 250px;
+  color: white;
+  width: 500px;
+  background-color: #282c39;
+  border-radius: 5px;
+  cursor: pointer;
+  border-style: dashed;
+  border-color: #9a9a9a;
+  border-width: 1px;
+  border-image: 2 1;
+}
+
+.fixFlickering {
+  pointer-events: none;
+}

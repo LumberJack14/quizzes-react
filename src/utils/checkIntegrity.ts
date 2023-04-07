@@ -1,15 +1,15 @@
-import { Question, statusOnComplete } from "@/types/types";
+import { CustomQuestion, statusOnComplete } from "@/types/types";
 
 export default function checkIntegrity(
-  questions: Array<Question>
-): statusOnComplete {
-  let status: statusOnComplete = "OK";
-  questions.forEach(question => {
-    if (question.text.length === 0) status = "ERROR";
-    question.answers.forEach(ans => {
-      if (ans.text.length === 0) status = "ERROR";
-    });
-  });
+  questions: Array<CustomQuestion>
+): [statusOnComplete, string] {
+  for (const question of questions) {
+    if (question.text.length === 0) return ["QUESTION", question.name];
 
-  return status;
+    for (const answer of question.answers) {
+      if (answer.text.length === 0) return ["ANSWER", question.name];
+    }
+  }
+
+  return ["OK", ""];
 }
