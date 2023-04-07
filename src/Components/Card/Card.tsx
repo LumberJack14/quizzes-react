@@ -11,19 +11,23 @@ import startButtonStyles from "@/styles/Button37.module.css";
 
 // consider changing to type?
 // TODO: change basic button to green button
-interface Props {
+export type CardProps = {
   quizName: string;
   quizDesc: string;
   creatorId: number;
   amount: number;
-}
+  id: number;
+  creatorName: string;
+};
 
 const Card = ({
   quizName,
   quizDesc,
   creatorId,
   amount,
-}: Props): JSX.Element => {
+  id,
+  creatorName,
+}: CardProps): JSX.Element => {
   const router = useRouter();
   const [selectedTimer, setSelectedTimer] = useState<number>(10);
 
@@ -33,10 +37,10 @@ const Card = ({
 
   const handleClick = () => {
     router.push({
-      pathname: "/games/[gameid]",
+      pathname: `/games/${id}`,
       query: {
         seconds: selectedTimer,
-        gameid: 1,
+        id: id,
       },
     });
   };
@@ -58,13 +62,13 @@ const Card = ({
       <div className={styles.rightContainer}>
         <div className={styles.descriptionContainer}>
           <h2 className={styles.header}>{quizName}</h2>
-          <h2>
+          <h3>
             {" "}
             Description: <br />
             {quizDesc} <br />
             amount of questions: {amount} <br />
-            creator: creatorId{creatorId}
-          </h2>
+            creator: {creatorName}
+          </h3>
         </div>
         <div className={styles.buttonContainer}>
           <button className={startButtonStyles.button} onClick={handleClick}>

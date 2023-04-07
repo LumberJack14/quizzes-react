@@ -27,9 +27,9 @@ export const inputs: Array<FormInputType> = [
     placeholder: "CoolQuiz1337",
     name: "quizName",
     errorMessage:
-      "Quiz name should have 1-50 characters. And no special characters.",
+      "Quiz name should have 1-50 characters. And no mega special characters like %, $ etc.",
     required: true,
-    pattern: "[A-Za-z0-9]{1,50}$",
+    pattern: "[:,!?.А-Яа-яA-Za-z0-9 ]{1,50}$",
   },
   {
     id: 2,

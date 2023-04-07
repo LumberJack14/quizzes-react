@@ -1,13 +1,15 @@
 import React, { useState, ReactElement } from "react";
 import { useRouter } from "next/router";
-import { CustomQuestion } from "@/types/types";
+import { CustomQuestion, Quiz } from "@/types/types";
 import { primaryAnswers, questionNameInput } from "@/utils/constants";
 import Layout from "@/Components/layout";
+import checkIntegrity from "@/utils/checkIntegrity";
 import {
   QuestionsSideBar,
   TextArea,
   FormInput,
   AnswersForm,
+  GreenButton,
 } from "@/Components";
 
 import styles from "@/styles/Creator.module.css";
@@ -25,7 +27,7 @@ const Questions = (): JSX.Element => {
       name: "",
       number: 1,
       text: "",
-      answers: primaryAnswers,
+      answers: JSON.parse(JSON.stringify(primaryAnswers)),
     },
   ]);
   const [selectedQuestion, setSelectedQuestion] = useState<number>(1);
@@ -39,9 +41,11 @@ const Questions = (): JSX.Element => {
         name: "",
         number: questions.length + 1,
         text: "",
-        answers: primaryAnswers,
+        answers: JSON.parse(JSON.stringify(primaryAnswers)),
       },
     ]);
+    console.log("primary answers: ");
+    console.log(primaryAnswers);
   };
 
   const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -117,6 +121,14 @@ const Questions = (): JSX.Element => {
     );
   };
 
+  //add redirect to a new page indicating that the creation was successfull
+  const handleSubmit = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const response = submitQuiz(primaryInfo, questions);
+    console.log(response);
+  };
+
   return (
     <div
       className={styles.container}
@@ -153,6 +165,7 @@ const Questions = (): JSX.Element => {
           addAnswer={addAnswer}
           setCorrect={setCorrect}
         />
+        <GreenButton text="Submit Quiz" onClick={handleSubmit} />
       </form>
     </div>
   );
@@ -160,6 +173,38 @@ const Questions = (): JSX.Element => {
 
 Questions.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
+};
+
+const submitQuiz = async (
+  primaryInfo: any,
+  questions: Array<CustomQuestion>
+) => {
+  if (checkIntegrity(questions) === "ERROR") {
+    alert("Some questions or answers are unfilled.");
+    return;
+  }
+  let data: Quiz = {
+    amount: questions.length,
+    quizName: primaryInfo.quizName,
+    quizDesc: primaryInfo.quizDesc,
+    questions: questions,
+    creatorId: 10,
+    creatorName: primaryInfo.creatorName,
+  };
+  console.log(data);
+
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_QUIZZES_API_URL as string,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+
+  return response;
 };
 
 export default Questions;

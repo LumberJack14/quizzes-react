@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import styles from "@/styles/PrimaryForm.module.css";
 
 const Create = (): JSX.Element => {
-  const [questionsAmount, setQuestionsAmount] = useState<number>(0);
   const router = useRouter();
 
   // the idea: user submits primary form and then goes on to create

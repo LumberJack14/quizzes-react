@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import Card from "@/Components/Card/Card";
 import useFetch from "@/utils/useFetch";
 import { Quiz } from "@/types/types";
+import Layout from "@/Components/layout";
 
 import styles from "@/styles/quizdemo.module.css";
 
@@ -19,11 +20,11 @@ export default function QuizPage(): JSX.Element {
   const { data } = useFetch(
     `${apiURL}?pageNumber=${pageNumber}&pageSize=${pageSize}`
   );
-  console.log(data);
 
   const quizzes = data?.quizzes;
   const amount = data?.amount;
 
+  //sort out everything about AS type casting so delete it
   return (
     <div className={styles.page}>
       {quizzes?.map((quiz: Quiz) => (
@@ -32,9 +33,15 @@ export default function QuizPage(): JSX.Element {
           quizName={quiz.quizName}
           quizDesc={quiz.quizDesc}
           creatorId={quiz.creatorId}
+          creatorName={quiz.creatorName as string}
           amount={quiz.amount}
+          id={quiz.id as number}
         />
       ))}
     </div>
   );
 }
+
+QuizPage.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};

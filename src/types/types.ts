@@ -1,6 +1,9 @@
 import { HTMLInputTypeAttribute } from "react";
 
+export type statusOnComplete = "OK" | "ERROR";
+
 export type Answer = {
+  id?: number;
   text: string;
   correct: boolean;
 };
@@ -11,8 +14,8 @@ export interface Question {
 }
 
 export interface Quiz {
+  id?: number;
   amount: number;
-  id: number;
   quizName: string;
   quizDesc: string;
   questions: Array<Question>;
