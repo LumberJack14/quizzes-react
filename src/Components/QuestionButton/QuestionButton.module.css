@@ -1,22 +1,33 @@
 .main {
-    display: flex;
-    flex-direction: row;
-    background-color: #202125;
-    width: 200px;
-    height: 50px;
-    padding-left: 30px;
+  display: flex;
+  flex-direction: row;
+  background-color: #202125;
+  width: 230px;
+  height: 50px;
+}
+
+.container {
+  margin-left: 15px;
 }
 
 .question {
-    color: #a0a4b4;
-    width: 200px;
-    font-size: 15px;
-    display: inline;
-    text-overflow: ellipsis;
-    overflow: hidden;
+  color: #a0a4b4;
+  font-size: 15px;
+  overflow: hidden;
+  width: 160px;
+  white-space: nowrap;
+  display: inline-block;
+  text-overflow: ellipsis;
+  margin-top: 0;
+}
+
+.name {
+  margin-bottom: 0;
+  height: 18px;
+  font-size: 16px;
 }
 
 .main:hover {
-    background-color: #2a2c31;
-    cursor: pointer;
+  background-color: #2a2c31;
+  cursor: pointer;
 }

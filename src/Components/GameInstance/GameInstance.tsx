@@ -1,8 +1,8 @@
 import { Question, Answer } from "@/types/types";
 import Link from "next/link";
-import React from "react";
-import { AnswerButton, Timer } from "../index";
-//working?
+import React, { useState } from "react";
+import { AnswerButton, Timer } from "@/Components";
+
 import styles from "@/styles/Button84.module.css";
 
 type Props = {
@@ -18,6 +18,8 @@ const GameInstance = ({
   handleAnswer,
   seconds,
 }: Props): JSX.Element => {
+  const [restartTimer, setRestartTimer] = useState<boolean>(false);
+
   return (
     <div>
       <div>
@@ -29,6 +31,8 @@ const GameInstance = ({
         <Timer
           secondsNumber={seconds}
           onTimerFinished={() => handleAnswer(undefined)}
+          restartTimer={restartTimer}
+          setRestartTimer={() => setRestartTimer(false)}
         />
         <h2>
           question number: {currentQuestion + 1} <br />
@@ -37,7 +41,10 @@ const GameInstance = ({
             return (
               <AnswerButton
                 key={e.text}
-                onClick={() => handleAnswer(e)}
+                onClick={() => {
+                  handleAnswer(e);
+                  setRestartTimer(true);
+                }}
                 text={e.text}
               />
             );

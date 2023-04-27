@@ -13,11 +13,6 @@ export type QuestoinButtonProps = {
 const QuestionButton = (props: QuestoinButtonProps): JSX.Element => {
   const { questionName, questionText, onClick, questionNumber } = props;
 
-  const innerText =
-    questionText.length >= 20
-      ? `${questionText.slice(0, 20)}...`
-      : questionText;
-
   return (
     <div
       role="button"
@@ -32,15 +27,16 @@ const QuestionButton = (props: QuestoinButtonProps): JSX.Element => {
     >
       <QuestionMark
         style={{
-          marginRight: "10px",
-          marginTop: "3px",
+          height: "20px",
+          marginLeft: "25px",
+          marginTop: "10px",
         }}
       />
-      <div>
+      <div className={styles.container}>
         <div className={styles.name}>
           {questionName === "" ? `Question ${questionNumber}` : questionName}
         </div>
-        <div className={styles.question}>{innerText}</div>
+        <div className={styles.question}>{questionText}</div>
       </div>
     </div>
   );

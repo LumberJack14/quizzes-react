@@ -34,7 +34,7 @@ const QuestionsSideBar: React.FC<QuestionsSBProps> = ({
   };
 
   return (
-    <div className={styles.container}>
+    <aside className={styles.container}>
       <div className={styles.wrapper}>
         {questions.map(el => (
           <QuestionButton
@@ -50,11 +50,14 @@ const QuestionsSideBar: React.FC<QuestionsSBProps> = ({
         text={"Add"}
         onClick={handleAdd}
         style={{
-          marginLeft: "10px",
-          marginBottom: "10px",
+          height: "40px",
+          width: "180px",
+          position: "absolute",
+          top: "92dvh",
+          marginLeft: "25px",
         }}
       />
-    </div>
+    </aside>
   );
 };
 

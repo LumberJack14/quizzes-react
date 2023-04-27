@@ -13,10 +13,11 @@ export default function QuizPage(): JSX.Element {
   // TODO: onBlur event DropDownMenu
   const apiURL = process.env.NEXT_PUBLIC_QUIZZES_TOP_URL as string;
 
-  const [pageNumber, setPageNumber] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
 
   //TODO: add error and pending parts
+  //TODO: use URL object instead
   const { data } = useFetch(
     `${apiURL}?pageNumber=${pageNumber}&pageSize=${pageSize}`
   );

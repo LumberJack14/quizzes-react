@@ -20,7 +20,7 @@ const Home: NextPageWithLayout = () => {
         onClick={() => {}}
         questionNumber={1}
       />
-      <Upload />
+      <Upload label={""} maxSize={0} accept={""} />
     </div>
   );
 };

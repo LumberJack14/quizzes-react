@@ -36,7 +36,6 @@ export default function Game({
 }: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element {
   const router = useRouter();
   let seconds = router?.query?.seconds;
-  console.log(data);
 
   const questions: Array<Question> = data.questions;
 

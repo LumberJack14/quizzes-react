@@ -22,6 +22,7 @@
 
 .icon {
   color: rgb(171, 171, 171);
+  height: 35px;
   transition-property: transform, color;
   transition-duration: 0.3s;
   /* defaults but let them be */
@@ -62,6 +63,10 @@
 .dragbutton {
   height: 250px;
   color: white;
+  font-family: -apple-system, BlinkMacSystemFont, Roobert, BlinkMacSystemFont,
+    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: medium;
   width: 500px;
   background-color: #282c39;
   border-radius: 5px;

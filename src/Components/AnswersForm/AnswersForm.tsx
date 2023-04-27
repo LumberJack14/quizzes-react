@@ -5,7 +5,6 @@ import { Answer } from "@/types/types";
 
 import styles from "./AnswersForm.module.css";
 
-type answerColor = "red" | "green";
 export type AnswersFormProps = {
   answers: Array<Answer>;
   changeAnswer: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;

@@ -1,11 +1,20 @@
 .container {
   display: flex;
   flex-direction: row;
+  flex: 1;
   font-family: -apple-system, BlinkMacSystemFont, Roobert, BlinkMacSystemFont,
     "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .form {
-  margin: 50px 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.formwrap {
+  width: 100%;
+  overflow-y: scroll;
 }

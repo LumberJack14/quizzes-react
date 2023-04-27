@@ -1,7 +1,7 @@
 import React, { useState, ReactElement } from "react";
 import { NextRouter, useRouter } from "next/router";
 import { CustomQuestion, Quiz } from "@/types/types";
-import { primaryAnswers, questionNameInput } from "@/utils/constants";
+import { MEGABYTE, primaryAnswers, questionNameInput } from "@/utils/constants";
 import Layout from "@/Components/layout";
 import checkIntegrity from "@/utils/checkIntegrity";
 import {
@@ -10,6 +10,7 @@ import {
   FormInput,
   AnswersForm,
   GreenButton,
+  Upload,
 } from "@/Components";
 
 import styles from "@/styles/Creator.module.css";
@@ -127,9 +128,14 @@ const Questions = (): JSX.Element => {
 
     response.catch(error => {
       console.error(error);
-      //router.push("/errorPage");
+      // router.push("/errorPage");
       // add an error page explaining what's going on
     });
+  };
+
+  const supressSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    return;
   };
 
   return (
@@ -149,27 +155,34 @@ const Questions = (): JSX.Element => {
         setCurrentQuestion={setSelectedQuestion}
         questions={questions}
       />
-      <form className={styles.form}>
-        <h1>{primaryInfo.quizName}</h1>
-        <FormInput
-          value={questions[selectedQuestion - 1].name}
-          input={questionNameInput}
-          onChange={onNameChange}
-        />
-        <TextArea
-          text={questions[selectedQuestion - 1].text}
-          placeholder="your question"
-          label="Question"
-          onChange={onQuestionChange}
-        />
-        <AnswersForm
-          answers={questions[selectedQuestion - 1].answers}
-          changeAnswer={changeAnswer}
-          addAnswer={addAnswer}
-          setCorrect={setCorrect}
-        />
-        <GreenButton text="Submit Quiz" onClick={handleSubmit} />
-      </form>
+      <div className={styles.formwrap}>
+        <form onSubmit={supressSubmit} className={styles.form}>
+          <h1>{primaryInfo.quizName}</h1>
+          <FormInput
+            value={questions[selectedQuestion - 1].name}
+            input={questionNameInput}
+            onChange={onNameChange}
+          />
+          <TextArea
+            text={questions[selectedQuestion - 1].text}
+            placeholder="your question"
+            label="Question"
+            onChange={onQuestionChange}
+          />
+          <Upload
+            accept="image/png, image/jpeg"
+            label="Illustration"
+            maxSize={MEGABYTE * 1.5}
+          />
+          <AnswersForm
+            answers={questions[selectedQuestion - 1].answers}
+            changeAnswer={changeAnswer}
+            addAnswer={addAnswer}
+            setCorrect={setCorrect}
+          />
+          <GreenButton text="Submit Quiz" onClick={handleSubmit} />
+        </form>
+      </div>
     </div>
   );
 };

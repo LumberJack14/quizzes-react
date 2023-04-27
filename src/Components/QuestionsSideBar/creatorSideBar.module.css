@@ -23,21 +23,19 @@
   width: 0px;
 }
 
-/* .wrapper::-webkit-scrollbar {
-    width: 8px;
-  }
-  
+.wrapper::-webkit-scrollbar {
+  width: 8px;
+}
 
-  .wrapper::-webkit-scrollbar-thumb {
-    background-color: rgba(65, 202, 140, 0.5);
-    border-radius: 8px;
-  }
-  
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(40, 46, 52, 0.5);
+  border-radius: 8px;
+}
 
-  .wrapper::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
- */
+.wrapper::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 .button {
   width: 100%;
   text-align: left;

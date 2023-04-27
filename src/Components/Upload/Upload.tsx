@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { RiUpload2Fill } from "react-icons/ri";
+import { MEGABYTE } from "@/utils/constants";
+import CloudIcon from "../../../public/svg/cloud-icon.svg";
 
 import styles from "./Upload.module.css";
-import { MEGABYTE } from "@/utils/constants";
 
 export interface UploadProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   maxSize: number;
-  // to add
+  accept: string;
 }
 
 const Upload: React.FC<UploadProps> = props => {
@@ -23,11 +23,11 @@ const Upload: React.FC<UploadProps> = props => {
   );
   const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     selectedImage && setImageSrc(URL.createObjectURL(selectedImage));
   }, [selectedImage, errorMessage]);
-
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
     inputRef.current?.click();
@@ -35,14 +35,18 @@ const Upload: React.FC<UploadProps> = props => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    if (e.target.files?.item(0)) {
-      if ((e.target.files?.item(0) as File).size > maxSize) {
-        setErrorMessage(
-          `The size of selected image is above  ${maxSize / MEGABYTE}MB`
-        );
-        return;
-      }
+
+    if (!e.target.files?.item(0)) {
+      return;
     }
+
+    if ((e.target.files?.item(0) as File).size > maxSize) {
+      setErrorMessage(
+        `The size of selected image is above  ${maxSize / MEGABYTE}MB`
+      );
+      return;
+    }
+
     setSelectedImage(e.target.files?.item(0));
     setErrorMessage(undefined);
   };
@@ -92,7 +96,7 @@ const Upload: React.FC<UploadProps> = props => {
           onClick={handleClick}
           className={styles.button}
         >
-          {!imageSrc && <RiUpload2Fill className={styles.icon} size={40} />}
+          {!imageSrc && <CloudIcon className={styles.icon} />}
           {imageSrc && (
             <>
               <img className={styles.image} src={imageSrc} alt="" />

@@ -14,7 +14,7 @@ export interface Question {
 }
 
 export interface Quiz {
-  id?: number;
+  id?: number | string;
   amount: number;
   quizName: string;
   quizDesc: string;

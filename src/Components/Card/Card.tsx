@@ -7,10 +7,11 @@ import { IoIosTimer } from "react-icons/io";
 import { useRouter } from "next/router";
 
 import styles from "./Card.module.css";
-import startButtonStyles from "@/styles/Button37.module.css";
+import GreenButton from "../GreenButton";
 
 // consider changing to type?
 // TODO: change basic button to green button
+// infinite scrolling with IntersectionObserver
 export type CardProps = {
   quizName: string;
   quizDesc: string;
@@ -46,8 +47,8 @@ const Card = ({
   };
 
   return (
-    <div className={styles.card}>
-      <div className={styles.imageContainer}>
+    <article className={styles.card}>
+      <figure className={styles.imageContainer}>
         <Image
           src={poster}
           alt="poster"
@@ -58,7 +59,7 @@ const Card = ({
           }}
           priority={true}
         />
-      </div>
+      </figure>
       <div className={styles.rightContainer}>
         <div className={styles.descriptionContainer}>
           <h2 className={styles.header}>{quizName}</h2>
@@ -71,9 +72,13 @@ const Card = ({
           </h3>
         </div>
         <div className={styles.buttonContainer}>
-          <button className={startButtonStyles.button} onClick={handleClick}>
-            START
-          </button>
+          <GreenButton
+            text="START"
+            style={{
+              marginRight: "30px",
+            }}
+            onClick={handleClick}
+          />
           <DropDownMenu
             text="SET TIMER"
             items={possibleTimers}
@@ -90,7 +95,7 @@ const Card = ({
           />
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

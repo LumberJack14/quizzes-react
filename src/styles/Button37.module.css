@@ -5,7 +5,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
   box-sizing: border-box;
   color: #fff;
-  margin-right: 20px;
+  margin: auto;
   cursor: pointer;
   font-family: -apple-system, BlinkMacSystemFont, Roobert, BlinkMacSystemFont,
     "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
@@ -14,8 +14,9 @@
   font-weight: 400;
   outline: none;
   outline: 0;
-  padding: 10px 25px;
+  padding: 0 30px;
   text-align: center;
+  vertical-align: middle;
   transition: box-shadow 150ms;
   height: 52px;
   user-select: none;
@@ -26,10 +27,4 @@
 .button:hover {
   box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
   box-shadow: 0 0 2px 1px #01b075;
-}
-
-@media (min-width: 768px) {
-  .button {
-    padding: 10px 30px;
-  }
 }

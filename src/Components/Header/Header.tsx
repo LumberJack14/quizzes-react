@@ -6,7 +6,7 @@ import styles from "./Header.module.css";
 
 const Header: React.FC = () => {
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <div className={styles.left}>
         <button>button1</button>
       </div>
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
         <button>button6</button>
         <button>button7</button>
       </div>
-    </div>
+    </header>
   );
 };
 
